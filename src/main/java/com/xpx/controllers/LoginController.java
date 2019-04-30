@@ -27,8 +27,7 @@ public class LoginController {
 	@Autowired
 	EmployeeRepository empRepo;	
 	
-	// Returns an Employee object if authenticated Or returns with response code not found.
-	 
+	// Returns an Employee object if authenticated Or returns with response code not found(404) .	 
 	@PostMapping
 	public ResponseEntity<Employee> authenticate(HttpServletRequest request ,@RequestBody Employee employee) {
 

@@ -54,6 +54,7 @@ public class EmployeeController {
 
 	}
 
+	//Returns the Employee currently in session
 	@GetMapping("/info")
 	public ResponseEntity<Employee> userInfo(@SessionAttribute("employee") Employee employee) {
 
