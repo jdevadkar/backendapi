@@ -1,5 +1,6 @@
 package com.xpx;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,18 @@ public class BackEndApiApplicationTests {
 
 	@Test
 	public void contextLoads() {
+	}
+	
+	@Test
+	public void testTrue() {
+		System.out.println("testTrue");
+		Assert.assertFalse(false);
+	}
+	
+	@Test
+	public void testFasle() {
+		System.out.println("testFalse");
+		Assert.assertFalse(true);
 	}
 
 }
