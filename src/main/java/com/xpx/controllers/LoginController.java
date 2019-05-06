@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xpx.dao.EmployeeRepository;
+import com.xpx.entity.ApiToken;
 import com.xpx.entity.Employee;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -38,9 +39,15 @@ public class LoginController {
 		} else if (!emp.getPassword().equals(employee.getPassword())) {
 			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		} else {
-			//sessionEmp =emp;
+			
+			emp.setApiToekn(new ApiToken("access","refresh","1" ));
 			request.getSession().setAttribute("employee", emp);
-			return new ResponseEntity<Employee>(emp, HttpStatus.OK);		
+			
+			
+			ResponseEntity rep =new ResponseEntity<Employee>(emp, HttpStatus.OK);
+			
+			return new ResponseEntity<Employee>(emp, HttpStatus.OK);	
+			
 			
 			
 		}

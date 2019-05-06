@@ -20,10 +20,5 @@ public class BackEndApiApplicationTests {
 		Assert.assertFalse(false);
 	}
 	
-	@Test
-	public void testFasle() {
-		System.out.println("testFalse");
-		Assert.assertFalse(true);
-	}
 
 }
