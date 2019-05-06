@@ -1,0 +1,41 @@
+node {
+   def mvnHome
+   stage('Preparation') { // for display purposes
+    git url: 'https://github.com/jdevadkar/backendapi.git', branch: "feature"
+   
+   
+      // Get some code from a GitHub repository
+      //git 'https://github.com/jdevadkar/backendapi.git'
+      // Get the Maven tool.
+      // ** NOTE: This 'M3' Maven tool must be configured
+      // **       in the global configuration.           
+      mvnHome = tool 'M3'
+   }
+   stage('Build') {
+       echo 'Build stage started'
+      // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      } else {
+           echo 'windows env detected'
+           bat(/"${mvnHome}\bin\mvn" clean install/)
+       //  bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      }
+   }
+   stage('Scan') {
+        echo 'Code Scanning stage started'
+        scannerHome = tool 'SonarScanner'
+        withSonarQubeEnv ('mySonar'){
+            echo 'my sonar'
+           // bat(/"${scannerHome}\sonar-scanner/ )
+            
+    }
+    //   junit '**/target/surefire-reports/TEST-*.xml'
+    //   archiveArtifacts 'target/*.jar'
+   }
+   stage('Results') {
+        echo 'Result stage started'
+    //   junit '**/target/surefire-reports/TEST-*.xml'
+    //   archiveArtifacts 'target/*.jar'
+   }
+}
