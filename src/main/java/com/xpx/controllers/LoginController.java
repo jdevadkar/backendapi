@@ -47,7 +47,7 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping("/logout")
+	@PostMapping("/logout")
 	public ResponseEntity<Employee> logout(HttpServletRequest request) {
 		request.getSession().setAttribute("employee", null);
 		System.out.println("Request for Logout");
