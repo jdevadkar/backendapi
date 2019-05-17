@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.xpx.dao.EmployeeRepository;
 import com.xpx.entity.Employee;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -62,4 +63,6 @@ public class EmployeeController {
 
 		return res;
 	}
+	
+	
 }
